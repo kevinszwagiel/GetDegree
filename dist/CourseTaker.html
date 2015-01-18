@@ -7,10 +7,12 @@ Hack_UTD
         <title>COURSETAKER</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
         <script src="js/hackutd.js"></script>
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     </head>
     <body>
+
+      <div id="wrap">
         <div id="top"> <!--Top of the page-->
             <h1> Home </h1>
                 <!--Display user's name-->
@@ -20,51 +22,51 @@ Hack_UTD
                 <br>
                 Major <input id='major' type='text' size='25'>
                 <br>
-				<!--Get amount of hours desired-->
-				Hours Desired <input id='hoursDesired' type='text' size='2'>
-				
+        <!--Get amount of hours desired-->
+        Hours Desired <input id='hoursDesired' type='text' size='2'>
+        
         </div>
         <div id="leftSide"> <!--Left Side of Page-->    
             <!--This is where the classes will be recommended-->
             <form action="">
                 <script>
-                    //var major = document.querySelector(‘#major’);
-					//var hoursDesired = document.querySelector(‘#hoursDesired’);
-					//var allCourses = document.querySelector(‘#allCourses’);
-					//var courseUL = document.createElement('ul');
+                    var major = document.querySelector(‘#major’);
+          var hoursDesired = document.querySelector(‘#hoursDesired’);
+          var allCourses = document.querySelector(‘#allCourses’);
+          var courseUL = document.createElement('ul');
 
-					jQuery('#hoursDesired').on('input', function() {
-					  var hours = hoursDesired.value;
-					  getCourses(hours, major.value, function(err, updatedCourses){
-						//if(err) return console.log(‘Error!’, err);
-						allCourses.clear();
+          hoursDesired.onchange = function(hoursDesired){
+            var hours = hoursDesired.value;
+            getCourses(hours, major.value, function(err, updatedCourses){
+            if(err) return console.log(‘Error!’, err);
+            allCourses.clear();
 
-						updatedCourses.map(function(course){
-						  /*var courseElement = document.createElement(‘checkbox’);
-						  courseElement.value = course.name;
-						  courseElement.id = course.id;
-						  courseUL.appendChild(courseElement);
-						  return courseElement;*/
-						})
+            updatedCourses.map(function(course){
+              var courseElement = document.createElement(‘checkbox’);
+              courseElement.value = course.name;
+              courseElement.id = course.id;
+              courseUL.appendChild(courseElement);
+              return courseElement;
+            })
 
-						for(var i = 0; i < updatedCourses.length; i++){
-						  allCourses.appendChild(updatedCourses[i]);
-						}
-					  })
-					});
-					
-					
-					
-					checkbox.onclick = function(checkbox){
-					  if(checkbox.checked){
-						checked.push(checkbox.id);
-					  }
-					  else {
-						var index = checked.indexOf(checkbox.id);
-						checked.splice(index, 1);
-					  }
-					}
-				</script>  
+            for(var i = 0; i < updatedCourses.length; i++){
+              allCourses.appendChild(updatedCourses[i]);
+            }
+            })
+          }
+          
+          
+          
+          checkbox.onclick = function(checkbox){
+            if(checkbox.checked){
+            checked.push(checkbox.id);
+            }
+            else {
+            var index = checked.indexOf(checkbox.id);
+            checked.splice(index, 1);
+            }
+        
+        </script>  
             </form>
 
             <!--This is the bottom to take the list back to the current suggestions
@@ -75,9 +77,9 @@ Hack_UTD
             <!-- Button Template
             <Button Height="23" HorizontalAlignment="Left" Margin="10,69,0,0" Name="Button1" VerticalAlignment="Top" Width="75">Button</Button>
             -->
-           <!-- </div>
-        
-        <div id="rightSide"> --><!--Right Side of Page-->
+           <!-- </div> -->
+        </div>
+        <div id="rightSide"> <!--Right Side of Page-->
            <script>
                function getCourses(checkbox){
                         if(checkbox.checked){
@@ -101,7 +103,9 @@ Hack_UTD
                 }     
             </script>
         </div>
-        
+      </div>  
     </body>
 
 </html>
+
+   
