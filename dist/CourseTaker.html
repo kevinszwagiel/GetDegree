@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--
+Hack_UTD
+-->
+<html>
+    <head>
+        <title>COURSETAKER</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+    </head>
+    <body>
+        <div id="top"> <!--Top of the page-->
+            <h1> Home </h1>
+                <!--Display user's name-->
+                Name <input id='name' type='text' size="25">
+                <!--Display how many hours user has left-->
+                <input id='hoursTaken' type="text" size="5"> out of <input id="hoursRemaining" type="text" size="5"> hours remaining.
+                <br>
+                Major <input id='major' type='text' size='25'>
+                <br>
+        </div>
+        <div id="leftSide"> <!--Left Side of Page-->    
+            <!--This is where the classes will be recommended-->
+            <form action="">
+                <input type="checkbox" name="Class One" value="Class">XXXXXXX<br>
+                <input type="checkbox" name="Class One" value="Class">XXXXXXX<br>
+                <input type="checkbox" name="Class One" value="Class">XXXXXXX<br>
+                <input type="checkbox" name="Class One" value="Class">XXXXXXX<br>
+                <input type="checkbox" name="Class One" value="Class">XXXXXXX<br>
+                <input type="checkbox" name="Class One" value="Class">XXXXXXX<br>
+                <input type="checkbox" name="Class One" value="Class">XXXXXXX<br>
+            </form>
+            
+            <!--To Print the rest of the classes needed-->
+            if(hoursNeeded>0){
+                <form>
+                    <input type="checkbox" name="Class One" value="Class">XXXXXXX<br> 
+                </form>
+            }
+            <!--This is the buttom to take the list back to the current suggestions
+                    Need to figure out what to do for the onclick
+            -->
+            <Button Type="button" Name="ResetButton" onclick="XXXXXXXXXXX">Reset</Button>
+            
+            <!-- Button Template
+            <Button Height="23" HorizontalAlignment="Left" Margin="10,69,0,0" Name="Button1" VerticalAlignment="Top" Width="75">Button</Button>
+            -->
+            </div>
+        
+        <div id="rightSide"> <!--Right Side of Page-->
+            
+        </div>
+        
+    </body>
+</html>
