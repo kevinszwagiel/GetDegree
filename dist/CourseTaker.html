@@ -7,6 +7,7 @@ Hack_UTD
         <title>COURSETAKER</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
+        <script src="hackutd.js"></script>
     </head>
     <body>
         <div id="top"> <!--Top of the page-->
@@ -22,21 +23,33 @@ Hack_UTD
         <div id="leftSide"> <!--Left Side of Page-->    
             <!--This is where the classes will be recommended-->
             <form action="">
-                <input id='firstClass' type="checkbox" name="Class One" value="Class"><br>
-                <input id='secondClass' type="checkbox" name="Class Two" value="Class"><br>
-                <input id='thirdClass' type="checkbox" name="Class Three" value="Class"><br>
-                <input id='forthClass' type="checkbox" name="Class Four" value="Class"><br>
-                <input id='fifthClass' type="checkbox" name="Class Five" value="Class"><br>
-                <input id='sixClass' type="checkbox" name="Class Six" value="Class"><br>
+                <script>
+                    var major = document.querySelector(‘#major’);
+					var hoursDesired = document.querySelector(‘#hoursDesired’);
+					var allCourses = document.querySelector(‘#allCourses’);
+
+					hoursDesired.onchange = function(hoursDesired){
+					  var hours = hoursDesired.value;
+					  getCourses(hours, major.value, function(err, updatedCourses){
+						if(err) return console.log(‘Error!’, err);
+						allCourses.clear();
+
+						updatedCourses.map(function(course){
+						  var courseElement = document.createElement(‘checkbox’);
+						  courseElement.value = course.name;
+						  courseElement.id = course.id;
+						  return courseElement;
+						})
+
+						for(var i = 0; i < updatedCourses.length; i++){
+						  allCourses.appendChild(updatedCourses[i]);
+						}
+					  })
+					}
+              </script>  
             </form>
-            
-            <!--To Print the rest of the classes needed-->
-            if(hoursNeeded>0){
-                <form>
-                    <input type="checkbox" name="Class One" value="Class">XXXXXXX<br> 
-                </form>
-            }
-            <!--This is the buttom to take the list back to the current suggestions
+
+            <!--This is the bottom to take the list back to the current suggestions
                     Need to figure out what to do for the onclick
             -->
             <Button Type="button" Name="ResetButton" onclick="XXXXXXXXXXX">Reset</Button>
@@ -44,11 +57,33 @@ Hack_UTD
             <!-- Button Template
             <Button Height="23" HorizontalAlignment="Left" Margin="10,69,0,0" Name="Button1" VerticalAlignment="Top" Width="75">Button</Button>
             -->
-            </div>
+           <!-- </div>
         
-        <div id="rightSide"> <!--Right Side of Page-->
-            
+        <div id="rightSide"> --><!--Right Side of Page-->
+           <script>
+               function getCourses(checkbox){
+                        if(checkbox.checked){
+                            //<!--checked.push(checkbox.id);-->
+                            alert("checkbox checked");
+                            var image = "http://fc03.deviantart.net/fs70/f/2013/012/e/c/png_cookie_by_ellatutorials-d5r8nel.png";
+                            return image;
+                        }
+                        else {
+                            /*<!--var index = checked.indexOf(checkbox.id);
+                            checked.splice(index, 1);
+                            -->*/
+                            alert("checkbox not checked");
+                            return "http://img3.wikia.nocookie.net/__cb20130227163834/nickelodeon/de/images/7/74/Spongebob_Laufbewegung.png";
+                        }
+                    
+                    /*getGraph(checked, function(err, graphURL){
+                        if(err) return console.log(‘Error!’, err);
+                        injectGraph(graphURL);
+                    }) */
+                }     
+            </script>
         </div>
         
     </body>
+
 </html>
