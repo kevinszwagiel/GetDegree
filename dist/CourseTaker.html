@@ -9,6 +9,7 @@ Hack_UTD
         <meta name="viewport" content="width=device-width">
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <script src="js/hackutd.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     </head>
     <body>
 
@@ -22,49 +23,51 @@ Hack_UTD
                 <br>
                 Major <input id='major' type='text' size='25'>
                 <br>
-        <!--Get amount of hours desired-->
-        Hours Desired <input id='hoursDesired' type='text' size='2'>
+				<!--Get amount of hours desired-->
+				Hours Desired <input id='hoursDesired' type='text' size='2'>
         
         </div>
         <div id="leftSide"> <!--Left Side of Page-->    
             <!--This is where the classes will be recommended-->
             <form action="">
                 <script>
-                    var major = document.querySelector(‘#major’);
-          var hoursDesired = document.querySelector(‘#hoursDesired’);
-          var allCourses = document.querySelector(‘#allCourses’);
-          var courseUL = document.createElement('ul');
+                    //var major = document.querySelector(‘#major’);
+                    //var hoursDesired = document.querySelector(‘#hoursDesired’);
+					//var allCourses = document.querySelector(‘#allCourses’);
+					//var courseUL = document.createElement('ul');
 
-          hoursDesired.onchange = function(hoursDesired){
-            var hours = hoursDesired.value;
-            getCourses(hours, major.value, function(err, updatedCourses){
-            if(err) return console.log(‘Error!’, err);
-            allCourses.clear();
+				jQuery('#hoursDesired').on('input', function(){
+					var hours = hoursDesired.value;
+					alert("hours changed");
+					getCourses(hours, major.value, function(err, updatedCourses){
+						//if(err) return console.log(‘Error!’, err);
+						allCourses.clear();
 
-            updatedCourses.map(function(course){
-              var courseElement = document.createElement(‘checkbox’);
-              courseElement.value = course.name;
-              courseElement.id = course.id;
-              courseUL.appendChild(courseElement);
-              return courseElement;
-            })
+						updatedCourses.map(function(course){
+						  //var courseElement = document.createElement(‘checkbox’);
+						  courseElement.value = course.name;
+						  courseElement.id = course.id;
+						  courseUL.appendChild(courseElement);
+						  return courseElement;
+						})
 
-            for(var i = 0; i < updatedCourses.length; i++){
-              allCourses.appendChild(updatedCourses[i]);
-            }
-            })
-          }
+						for(var i = 0; i < updatedCourses.length; i++){
+						  allCourses.appendChild(updatedCourses[i]);
+						}
+					})
+				});
           
           
           
           checkbox.onclick = function(checkbox){
             if(checkbox.checked){
-            checked.push(checkbox.id);
+				checked.push(checkbox.id);
             }
             else {
-            var index = checked.indexOf(checkbox.id);
-            checked.splice(index, 1);
+				var index = checked.indexOf(checkbox.id);
+				checked.splice(index, 1);
             }
+		  }
         
         </script>  
             </form>
